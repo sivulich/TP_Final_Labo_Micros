@@ -76,7 +76,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -115,6 +120,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="helix\mp3dec.c" />
+    <ClCompile Include="helix\mp3tabs.c" />
+    <ClCompile Include="helix\real\bitstream.c" />
+    <ClCompile Include="helix\real\buffers.c" />
+    <ClCompile Include="helix\real\dct32.c" />
+    <ClCompile Include="helix\real\dequant.c" />
+    <ClCompile Include="helix\real\dqchan.c" />
+    <ClCompile Include="helix\real\huffman.c" />
+    <ClCompile Include="helix\real\hufftabs.c" />
+    <ClCompile Include="helix\real\imdct.c" />
+    <ClCompile Include="helix\real\polyphase.c" />
+    <ClCompile Include="helix\real\scalfact.c" />
+    <ClCompile Include="helix\real\stproc.c" />
+    <ClCompile Include="helix\real\subband.c" />
+    <ClCompile Include="helix\real\trigtabs_fixpt.c" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="UI.c" />
   </ItemGroup>
@@ -122,6 +142,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="helix\platform.h" />
+    <ClInclude Include="helix\pub\mp3common.h" />
+    <ClInclude Include="helix\pub\mp3dec.h" />
+    <ClInclude Include="helix\pub\mpadecobjfixpt.h" />
+    <ClInclude Include="helix\pub\statname.h" />
+    <ClInclude Include="helix\real\assembly.h" />
+    <ClInclude Include="helix\real\coder.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

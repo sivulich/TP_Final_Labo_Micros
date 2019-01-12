@@ -26,12 +26,7 @@ struct UI_
 	* @return 			Returns 0 if the event was processed, returns ev if the event was not processed.
 	*/
 	char(*input)(char ev);
-	/**
-	* @brief 			Writes to var the file selected by de user
-	* @param var		Place to write the name of the file selected by the user
-	* @param maxLen		Max length to write to var
-	* @return 			Returns 0 if no file was selected, UNSIGNED_INT_MAX if error ocurred or the length of the name.
-	*/
+	
 	char*(*getFile)();
 	char*(*getPath)();
 	void(*exitFile)();
