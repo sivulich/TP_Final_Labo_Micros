@@ -7,7 +7,7 @@
 extern "C" {
 #endif
 
-	static char current[256][1024];
+	static char current[256][1025];
 	static char file[1024]=".";
 
 	struct dirent *de;  // Pointer for directory entry 
@@ -16,6 +16,17 @@ extern "C" {
 
 	static DIR *tmp, *dr;
 
+	int isDirectory(const char *file,const char* path) {
+		struct stat statbuf;
+		char temp[1024]="";
+		strcat_s(temp,1024, path);
+		strcat_s(temp,1024,"/");
+		strcat_s(temp,1024, file);
+		if (stat(temp, &statbuf) != 0)
+			return 0;
+		return S_ISDIR(statbuf.st_mode);
+	}
+
 
 	unsigned init() {
 		dr = opendir(".");
@@ -23,12 +34,19 @@ extern "C" {
 			ini = 0;
 		else
 			while ((de = readdir(dr)) != NULL && cnt < 256)
+			{
 				strncpy_s(current[cnt++], 1024, de->d_name, 1024);
+				current[cnt - 1][1024] = (char)isDirectory(current[cnt - 1],file);
+			}
 		return ini;
 
 	};
 
 	char input(char cmd) {
+		if (onFile == 1)
+		{
+			return cmd;
+		}
 		if (cmd == 's')
 		{
 			i = i + 1 >= cnt ? cnt - 1 : i + 1;
@@ -42,10 +60,16 @@ extern "C" {
 
 		else if (cmd == 'e')
 		{
-			tmp = opendir(current[i]);
+			if (i == 0 || (i == 1 && len==1))
+				return 1;
+			char temp[1024] = "";
+			strcat_s(temp, 1024, file);
+			strcat_s(temp, 1024, "/");
+			strcat_s(temp, 1024, current[i]);
+			tmp = opendir(temp);
 			if (tmp != NULL)
 			{
-				if (i != 0 && i != 1)
+				if (i != 1)
 				{
 					strcat_s(file, 1024, "/");
 					strcat_s(file, 1024, current[i]);
@@ -69,7 +93,10 @@ extern "C" {
 				i = 0;
 				dr = tmp;
 				while ((de = readdir(dr)) != NULL && cnt < 256)
+				{
 					strncpy_s(current[cnt++], 1024, de->d_name, 1024);
+					current[cnt - 1][1024] = (char)isDirectory(current[cnt - 1],file);
+				}
 				
 				
 			}
@@ -91,7 +118,6 @@ extern "C" {
 	char* getFile() {
 		if (newFile == 1)
 		{
-			
 			newFile = 0;
 			return getPath();
 		}
@@ -112,7 +138,7 @@ extern "C" {
 	{
 		if (onFile == 1)
 		{
-			onFile = 1;
+			onFile = 0;
 			newFile = 0;
 			for (int k = len - 1; k > 0; k--)
 			{
@@ -126,8 +152,13 @@ extern "C" {
 			}
 		}
 	}
+	void setPos(int p)
+	{
+		if(i>=0 && i<cnt)
+			i = p;
+	}
 
-	UI_ UI = { .init = init,.input = input,.getFile = getFile,.getPath=getPath,.getCurrent = getCurrent,.close = close,.exitFile=exitFile };
+	UI_ UI = { .init = init,.input = input,.getFile = getFile,.getPath=getPath,.getCurrent = getCurrent,.close = close,.exitFile=exitFile, .setPos=setPos };
 #ifdef __cplusplus
 }
 #endif

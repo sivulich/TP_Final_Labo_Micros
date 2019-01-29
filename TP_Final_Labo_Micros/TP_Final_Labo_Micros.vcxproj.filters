@@ -22,6 +22,48 @@
     <Filter Include="Helix\Real">
       <UniqueIdentifier>{dfd7a978-5daa-4a32-8afb-0a331027f1a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="read_ID3_info">
+      <UniqueIdentifier>{1f6204a0-086d-4536-9bf1-7984022cc9e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lvgl">
+      <UniqueIdentifier>{c342aedc-7e7a-4a29-8f94-a212f8110c2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lvgl\lv_core">
+      <UniqueIdentifier>{10ea2c7f-8b95-4643-9a83-c1f2c5dcaeb7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lvgl\lv_draw">
+      <UniqueIdentifier>{8a72b83c-0cfa-4055-b2aa-c602d18179a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lvgl\lv_fonts">
+      <UniqueIdentifier>{be704b7e-d4e2-4b14-b603-b9bf46098e13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lvgl\lv_hal">
+      <UniqueIdentifier>{788045c6-6c96-4dfc-a7eb-ceac2005ef51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lvgl\lv_misc">
+      <UniqueIdentifier>{2bf0b696-2e70-4044-8f91-a440aa31b251}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lvgl\lv_objx">
+      <UniqueIdentifier>{88270856-9014-4d86-9f33-c2e9858e5d3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lvgl\lv_themes">
+      <UniqueIdentifier>{8b0378cc-523c-442c-ad54-b4ea2236d0be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lv_drivers">
+      <UniqueIdentifier>{ca7f631b-8a79-4277-a5b4-a736b73071a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lv_drivers\display">
+      <UniqueIdentifier>{cc1c17d5-11a0-4626-b557-6e8f8cc74887}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lv_drivers\indev">
+      <UniqueIdentifier>{7a929920-888e-4f08-8097-979f7e331ca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDL2">
+      <UniqueIdentifier>{431ff93a-eb0e-4726-8597-f5e8ac277573}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SDL2\include">
+      <UniqueIdentifier>{d4f5ac32-33e8-4aad-a07e-a82160485c64}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -75,6 +117,309 @@
     <ClCompile Include="helix\mp3tabs.c">
       <Filter>Helix</Filter>
     </ClCompile>
+    <ClCompile Include="read_ID3_info\read_id3.c">
+      <Filter>read_ID3_info</Filter>
+    </ClCompile>
+    <ClCompile Include="MP3Ui.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_core\lv_group.c">
+      <Filter>lvgl\lv_core</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_core\lv_indev.c">
+      <Filter>lvgl\lv_core</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_core\lv_obj.c">
+      <Filter>lvgl\lv_core</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_core\lv_refr.c">
+      <Filter>lvgl\lv_core</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_core\lv_style.c">
+      <Filter>lvgl\lv_core</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_core\lv_vdb.c">
+      <Filter>lvgl\lv_core</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_draw\lv_draw.c">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_draw\lv_draw_arc.c">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_draw\lv_draw_img.c">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_draw\lv_draw_label.c">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_draw\lv_draw_line.c">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_draw\lv_draw_rbasic.c">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_draw\lv_draw_rect.c">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_draw\lv_draw_triangle.c">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_draw\lv_draw_vbasic.c">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_builtin.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_dejavu_10.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_dejavu_10_cyrillic.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_dejavu_10_latin_sup.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_dejavu_20.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_dejavu_20_cyrillic.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_dejavu_20_latin_sup.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_dejavu_30.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_dejavu_30_cyrillic.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_dejavu_30_latin_sup.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_dejavu_40.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_dejavu_40_cyrillic.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_dejavu_40_latin_sup.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_monospace_8.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_symbol_10.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_symbol_20.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_symbol_30.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_fonts\lv_font_symbol_40.c">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_hal\lv_hal_disp.c">
+      <Filter>lvgl\lv_hal</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_hal\lv_hal_indev.c">
+      <Filter>lvgl\lv_hal</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_hal\lv_hal_tick.c">
+      <Filter>lvgl\lv_hal</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_anim.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_area.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_circ.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_color.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_font.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_fs.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_ll.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_log.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_math.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_mem.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_task.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_templ.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_txt.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_misc\lv_ufs.c">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_arc.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_bar.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_btn.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_btnm.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_calendar.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_cb.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_chart.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_cont.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_ddlist.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_gauge.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_img.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_imgbtn.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_kb.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_label.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_led.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_line.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_list.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_lmeter.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_mbox.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_objx_templ.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_page.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_preload.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_roller.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_slider.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_sw.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_ta.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_tabview.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_objx\lv_win.c">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_themes\lv_theme.c">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_themes\lv_theme_alien.c">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_themes\lv_theme_default.c">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_themes\lv_theme_material.c">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_themes\lv_theme_mono.c">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_themes\lv_theme_nemo.c">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_themes\lv_theme_night.c">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_themes\lv_theme_templ.c">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClCompile>
+    <ClCompile Include="lvgl\lv_themes\lv_theme_zen.c">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClCompile>
+    <ClCompile Include="lv_drivers\display\fbdev.c">
+      <Filter>lv_drivers\display</Filter>
+    </ClCompile>
+    <ClCompile Include="lv_drivers\display\monitor.c">
+      <Filter>lv_drivers\display</Filter>
+    </ClCompile>
+    <ClCompile Include="lv_drivers\display\R61581.c">
+      <Filter>lv_drivers\display</Filter>
+    </ClCompile>
+    <ClCompile Include="lv_drivers\display\SSD1963.c">
+      <Filter>lv_drivers\display</Filter>
+    </ClCompile>
+    <ClCompile Include="lv_drivers\display\ST7565.c">
+      <Filter>lv_drivers\display</Filter>
+    </ClCompile>
+    <ClCompile Include="lv_drivers\indev\AD_touch.c">
+      <Filter>lv_drivers\indev</Filter>
+    </ClCompile>
+    <ClCompile Include="lv_drivers\indev\evdev.c">
+      <Filter>lv_drivers\indev</Filter>
+    </ClCompile>
+    <ClCompile Include="lv_drivers\indev\FT5406EE8.c">
+      <Filter>lv_drivers\indev</Filter>
+    </ClCompile>
+    <ClCompile Include="lv_drivers\indev\keyboard.c">
+      <Filter>lv_drivers\indev</Filter>
+    </ClCompile>
+    <ClCompile Include="lv_drivers\indev\mouse.c">
+      <Filter>lv_drivers\indev</Filter>
+    </ClCompile>
+    <ClCompile Include="lv_drivers\indev\mousewheel.c">
+      <Filter>lv_drivers\indev</Filter>
+    </ClCompile>
+    <ClCompile Include="lv_drivers\indev\XPT2046.c">
+      <Filter>lv_drivers\indev</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -103,6 +448,525 @@
     </ClInclude>
     <ClInclude Include="helix\pub\mp3common.h">
       <Filter>Helix\Pub</Filter>
+    </ClInclude>
+    <ClInclude Include="read_ID3_info\read_id3.h">
+      <Filter>read_ID3_info</Filter>
+    </ClInclude>
+    <ClInclude Include="MP3Ui.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lvgl.h">
+      <Filter>lvgl</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_conf_templ.h">
+      <Filter>lvgl</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_core\lv_group.h">
+      <Filter>lvgl\lv_core</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_core\lv_indev.h">
+      <Filter>lvgl\lv_core</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_core\lv_obj.h">
+      <Filter>lvgl\lv_core</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_core\lv_refr.h">
+      <Filter>lvgl\lv_core</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_core\lv_style.h">
+      <Filter>lvgl\lv_core</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_core\lv_vdb.h">
+      <Filter>lvgl\lv_core</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_draw\lv_draw.h">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_draw\lv_draw_arc.h">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_draw\lv_draw_img.h">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_draw\lv_draw_label.h">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_draw\lv_draw_line.h">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_draw\lv_draw_rbasic.h">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_draw\lv_draw_rect.h">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_draw\lv_draw_triangle.h">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_draw\lv_draw_vbasic.h">
+      <Filter>lvgl\lv_draw</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_fonts\lv_font_builtin.h">
+      <Filter>lvgl\lv_fonts</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_hal\lv_hal.h">
+      <Filter>lvgl\lv_hal</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_hal\lv_hal_disp.h">
+      <Filter>lvgl\lv_hal</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_hal\lv_hal_indev.h">
+      <Filter>lvgl\lv_hal</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_hal\lv_hal_tick.h">
+      <Filter>lvgl\lv_hal</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_anim.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_area.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_circ.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_color.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_font.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_fs.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_ll.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_log.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_math.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_mem.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_symbol_def.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_task.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_templ.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_txt.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_misc\lv_ufs.h">
+      <Filter>lvgl\lv_misc</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_arc.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_bar.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_btn.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_btnm.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_calendar.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_cb.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_chart.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_cont.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_ddlist.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_gauge.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_img.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_imgbtn.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_kb.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_label.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_led.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_line.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_list.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_lmeter.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_mbox.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_objx_templ.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_page.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_preload.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_roller.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_slider.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_sw.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_ta.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_tabview.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_objx\lv_win.h">
+      <Filter>lvgl\lv_objx</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_themes\lv_theme.h">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_themes\lv_theme_alien.h">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_themes\lv_theme_default.h">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_themes\lv_theme_material.h">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_themes\lv_theme_mono.h">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_themes\lv_theme_nemo.h">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_themes\lv_theme_night.h">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_themes\lv_theme_templ.h">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClInclude>
+    <ClInclude Include="lvgl\lv_themes\lv_theme_zen.h">
+      <Filter>lvgl\lv_themes</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_drivers\display\fbdev.h">
+      <Filter>lv_drivers\display</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_drivers\display\monitor.h">
+      <Filter>lv_drivers\display</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_drivers\display\R61581.h">
+      <Filter>lv_drivers\display</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_drivers\display\SSD1963.h">
+      <Filter>lv_drivers\display</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_drivers\display\ST7565.h">
+      <Filter>lv_drivers\display</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_drivers\indev\AD_touch.h">
+      <Filter>lv_drivers\indev</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_drivers\indev\evdev.h">
+      <Filter>lv_drivers\indev</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_drivers\indev\FT5406EE8.h">
+      <Filter>lv_drivers\indev</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_drivers\indev\keyboard.h">
+      <Filter>lv_drivers\indev</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_drivers\indev\mouse.h">
+      <Filter>lv_drivers\indev</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_drivers\indev\mousewheel.h">
+      <Filter>lv_drivers\indev</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_drivers\indev\XPT2046.h">
+      <Filter>lv_drivers\indev</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_drv_conf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_conf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="lv_ex_conf.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\begin_code.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\close_code.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_assert.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_atomic.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_audio.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_bits.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_blendmode.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_clipboard.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_config.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_config_android.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_config_iphoneos.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_config_macosx.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_config_minimal.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_config_pandora.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_config_psp.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_config_windows.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_config_winrt.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_config_wiz.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_copying.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_cpuinfo.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_egl.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_endian.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_error.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_events.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_filesystem.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_gamecontroller.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_gesture.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_haptic.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_hints.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_joystick.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_keyboard.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_keycode.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_loadso.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_log.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_main.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_messagebox.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_mouse.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_mutex.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_name.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_opengl.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_opengl_glext.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_opengles.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_opengles2.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_opengles2_gl2.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_opengles2_gl2ext.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_opengles2_gl2platform.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_opengles2_khrplatform.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_pixels.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_platform.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_power.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_quit.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_rect.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_render.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_revision.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_rwops.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_scancode.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_shape.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_stdinc.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_surface.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_system.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_syswm.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_test.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_test_assert.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_test_common.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_test_compare.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_test_crc32.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_test_font.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_test_fuzzer.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_test_harness.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_test_images.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_test_log.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_test_md5.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_test_memory.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_test_random.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_thread.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_timer.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_touch.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_types.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_version.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_video.h">
+      <Filter>SDL2\include</Filter>
+    </ClInclude>
+    <ClInclude Include="SDL2\include\SDL_vulkan.h">
+      <Filter>SDL2\include</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

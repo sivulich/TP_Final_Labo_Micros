@@ -1,0 +1,253 @@
+#include "MP3Ui.h"
+#include "UI.h"
+#include <stdio.h>
+static lv_obj_t * mainScreen, *equalizerScreen,*filesScreen;
+static lv_obj_t * currentFileList[1024],*fileList[2];
+static unsigned fileListSz = 0,fileListPointer=0,back=0;
+/*Button styles*/
+static lv_style_t style_bg,style_bgg;
+static lv_style_t style_btn_rel;
+static lv_style_t style_btn_pr;
+
+
+static int checkMP3file(char* fn, size_t sz)
+{
+	if (fn[sz - 1] == '3' && fn[sz - 2] == 'p' && fn[sz - 3] == 'm'&& fn[sz - 4] == '.')
+		return 1;
+	return 0;
+}
+
+static lv_res_t retMainScreen(lv_obj_t* obj)
+{
+	lv_scr_load(mainScreen);
+	return LV_RES_OK;
+}
+
+static lv_res_t btnm_action(lv_obj_t * btnm, const char *txt)
+{
+	if (strcmp(SYMBOL_EDIT, txt) == 0)
+	{
+		lv_scr_load(equalizerScreen);
+	}
+	else if (strcmp(SYMBOL_DIRECTORY, txt) == 0)
+	{
+		lv_scr_load(filesScreen);
+	}
+	return LV_RES_OK; /*Return OK because the button matrix is not deleted*/
+}
+
+static lv_res_t fileScreenUpdate(lv_obj_t* obj)
+{
+	unsigned pos = 0;
+	for (unsigned i = 0; i < fileListSz; i++)
+	{
+		if (obj == currentFileList[i])
+		{
+			pos = i;
+			break;
+		}
+			
+	}
+	UI.setPos(pos);
+	if(UI.input(UI_SELECT)==1)
+		return LV_RES_OK;
+	/*if (pos == 1 && back == 0)
+	{
+		lv_obj_set_hidden(fileList[fileListPointer], true);
+		fileListPointer = (fileListPointer + 1) % 2;
+		lv_obj_set_hidden(fileList[fileListPointer], false);
+		back = 1;
+		return LV_RES_OK;
+	}
+	back = 0;*/
+	char* currFile = UI.getFile();
+	printf("Current path %s\n", UI.getPath());
+	if (currFile != 0)
+	{
+		printf("Selected file %s\n", currFile);
+		UI.exitFile();
+	}
+	else
+	{
+		lv_obj_set_hidden(fileList[fileListPointer], true);
+		fileListPointer = (fileListPointer + 1) % 2;
+		lv_obj_set_hidden(fileList[fileListPointer], false);
+		lv_obj_del(fileList[fileListPointer]);
+		fileList[fileListPointer] = lv_list_create(filesScreen, NULL);
+		lv_obj_align(fileList[fileListPointer], NULL, LV_ALIGN_IN_TOP_MID, 0, 0);
+		currarr current = UI.getCurrent(&fileListSz, &pos);
+		for (unsigned i = 0; i < fileListSz; i++)
+		{
+			if (current[i][1024] == 1)
+			{
+				currentFileList[i] = lv_list_add(fileList[fileListPointer], SYMBOL_DIRECTORY, current[i], fileScreenUpdate);
+				lv_btn_set_style(currentFileList[i], LV_BTN_STATE_REL, &style_btn_rel);
+				lv_btn_set_style(currentFileList[i], LV_BTN_STATE_PR, &style_btn_pr);
+			}
+				
+		}
+		for (unsigned i = 0; i < fileListSz; i++)
+		{
+			if (current[i][1024] == 0)
+			{
+				if (checkMP3file(current[i], strlen(current[i])) == 0)
+					currentFileList[i] = lv_list_add(fileList[fileListPointer], SYMBOL_FILE, current[i], fileScreenUpdate);
+				else
+					currentFileList[i] = lv_list_add(fileList[fileListPointer], SYMBOL_AUDIO, current[i], fileScreenUpdate);
+				lv_btn_set_style(currentFileList[i], LV_BTN_STATE_REL, &style_btn_rel);
+				lv_btn_set_style(currentFileList[i], LV_BTN_STATE_PR, &style_btn_pr);
+			}
+		}
+	}
+	return LV_RES_OK;
+}
+
+static void MainScreenCreate(void)
+{
+	mainScreen = lv_obj_create(NULL, NULL);
+	static const char * btnm_map[] = { SYMBOL_AUDIO, SYMBOL_EDIT,"\n", SYMBOL_DIRECTORY,SYMBOL_SETTINGS, "" };
+	/*Create a default button matrix*/
+	lv_obj_t * btnm1 = lv_btnm_create(mainScreen, NULL);
+	lv_btnm_set_map(btnm1, btnm_map);
+	lv_btnm_set_action(btnm1, btnm_action);
+	lv_obj_set_size(btnm1, LV_HOR_RES, LV_VER_RES);
+
+	/*Create a second button matrix with the new styles*/
+	lv_btnm_set_style(btnm1, LV_BTNM_STYLE_BG, &style_bg);
+	lv_btnm_set_style(btnm1, LV_BTNM_STYLE_BTN_REL, &style_btn_rel);
+	lv_btnm_set_style(btnm1, LV_BTNM_STYLE_BTN_PR, &style_btn_pr);
+}
+
+static lv_obj_t* createRoller(const char* name, lv_coord_t x, lv_coord_t y, lv_coord_t w, lv_coord_t h)
+{
+	lv_obj_t *bassRoller = lv_roller_create(equalizerScreen, NULL);
+	lv_obj_t *bassLabel = lv_label_create(equalizerScreen, NULL);
+	lv_label_set_long_mode(bassLabel, LV_LABEL_LONG_ROLL);
+	lv_label_set_align(bassLabel, LV_LABEL_ALIGN_CENTER);
+	lv_obj_set_width(bassLabel, w);
+	lv_label_set_static_text(bassLabel, name);
+	
+	lv_roller_set_options(bassRoller, "-2\n"
+		"-1\n"
+		"0\n"
+		"1\n"
+		"2\n");
+	lv_roller_set_hor_fit(bassRoller, false);
+	lv_obj_set_pos(bassRoller, x, y);
+	lv_obj_set_width(bassRoller, w);
+	//lv_obj_set_height(bassRoller, h);
+	lv_roller_set_visible_row_count(bassRoller, 3);
+	lv_roller_set_selected(bassRoller, 2, false);
+	lv_obj_align(bassLabel, bassRoller, LV_ALIGN_OUT_TOP_MID, 0,0);
+	lv_roller_set_style(bassRoller, LV_ROLLER_STYLE_BG, &style_btn_rel);
+	lv_roller_set_style(bassRoller, LV_ROLLER_STYLE_SEL, &style_btn_pr);
+	return bassRoller;
+}
+
+static void BackButtonCreate(lv_obj_t* p, lv_res_t (*fn)(lv_obj_t* obj))
+{
+	lv_obj_t* backBtn = lv_btn_create(p, NULL);
+	lv_obj_set_pos(backBtn, 0, 0);
+	lv_cont_set_fit(backBtn, false, false);
+	lv_obj_set_width(backBtn, LV_HOR_RES / 15);
+	lv_obj_set_height(backBtn, LV_HOR_RES / 15);
+	lv_btn_set_action(backBtn, LV_BTN_ACTION_CLICK, fn);
+	lv_obj_t* lab = lv_label_create(backBtn, NULL);
+	lv_obj_set_height(lab, LV_HOR_RES / 15 - 3);
+	lv_label_set_text(lab, SYMBOL_LEFT);
+	lv_btn_set_style(backBtn, LV_BTN_STATE_REL, &style_btn_rel);
+	lv_btn_set_style(backBtn, LV_BTN_STATE_PR, &style_btn_pr);
+}
+
+static void EqualizerScreenCreate(void)
+{
+	equalizerScreen = lv_obj_create(NULL, NULL);
+	lv_obj_set_style(equalizerScreen, &style_bg);
+	static char *names[] = { "Bass","Mid","Trebble" };
+	createRoller(names[0], 0* LV_HOR_RES / 3, LV_VER_RES / 3, LV_HOR_RES / 3, LV_VER_RES * 2 / 3);
+	createRoller(names[1], 1*LV_HOR_RES / 3, LV_VER_RES / 3, LV_HOR_RES / 3, LV_VER_RES * 2 / 3);
+	createRoller(names[2], 2* LV_HOR_RES / 3, LV_VER_RES / 3, LV_HOR_RES / 3, LV_VER_RES * 2 / 3);
+	BackButtonCreate(equalizerScreen, retMainScreen);
+}
+
+static void FilesScreenCreate(void)
+{
+	filesScreen = lv_obj_create(NULL, NULL);
+	lv_obj_set_style(filesScreen, &style_bg);
+
+	unsigned pos;
+	currarr current = UI.getCurrent(&fileListSz, &pos);
+	fileList[0] = lv_list_create(filesScreen, NULL);
+	fileList[1] = lv_list_create(filesScreen, NULL);
+	lv_obj_set_hidden(fileList[1], true);
+	for (unsigned i = 0; i < fileListSz; i++)
+	{
+		if (current[i][1024] == 1)
+		{
+			currentFileList[i] = lv_list_add(fileList[fileListPointer], SYMBOL_DIRECTORY, current[i], fileScreenUpdate);
+			//lv_btn_set_style(currentFileList[i], LV_BTN_STYLE_BG, &style_bg);
+			lv_btn_set_style(currentFileList[i], LV_BTN_STATE_REL, &style_btn_rel);
+			lv_btn_set_style(currentFileList[i], LV_BTN_STATE_PR, &style_btn_pr);
+		}
+			
+	}
+	for (unsigned i = 0; i < fileListSz; i++)
+	{
+		if (current[i][1024] == 0)
+		{
+			if (checkMP3file(current[i], strlen(current[i])) == 0)
+				currentFileList[i] = lv_list_add(fileList[fileListPointer], SYMBOL_FILE, current[i], fileScreenUpdate);
+			else
+				currentFileList[i] = lv_list_add(fileList[fileListPointer], SYMBOL_AUDIO, current[i], fileScreenUpdate);
+			lv_btn_set_style(currentFileList[i], LV_BTN_STATE_REL, &style_btn_rel);
+			lv_btn_set_style(currentFileList[i], LV_BTN_STATE_PR, &style_btn_pr);
+		}
+	}
+	lv_obj_align(fileList[fileListPointer], NULL, LV_ALIGN_IN_TOP_MID, 0, 0);
+	BackButtonCreate(filesScreen, retMainScreen);
+}
+
+void StylesInit()
+{
+	/*Background style*/
+	lv_style_copy(&style_bg, &lv_style_plain);
+	style_bg.body.main_color = LV_COLOR_SILVER;
+	style_bg.body.grad_color = LV_COLOR_SILVER;
+	style_bg.body.padding.hor = 0;
+	style_bg.body.padding.ver = 0;
+	style_bg.body.padding.inner = 0;
+
+	/*General background style*/
+	lv_style_copy(&style_bgg, &style_bg);
+	style_bgg.body.main_color = LV_COLOR_MAKE(0xFF, 0xFF, 0xFF);
+	style_bgg.body.grad_color = LV_COLOR_MAKE(0xFF, 0xFF, 0xFF);
+	style_bgg.body.padding.hor = 0;
+	style_bgg.body.padding.ver = 0;
+	style_bgg.body.padding.inner = 0;
+
+	
+	/*Create button realese style*/
+	lv_style_copy(&style_btn_rel, &lv_style_btn_rel);
+	style_btn_rel.body.main_color = LV_COLOR_MAKE(0x30, 0x30, 0x30);
+	style_btn_rel.body.grad_color = LV_COLOR_BLACK;
+	style_btn_rel.body.border.color = LV_COLOR_SILVER;
+	style_btn_rel.body.border.width = 1;
+	style_btn_rel.body.border.opa = LV_OPA_50;
+	style_btn_rel.body.radius = 5;
+
+	/*Create button pressed style*/
+	lv_style_copy(&style_btn_pr, &style_btn_rel);
+	style_btn_pr.body.main_color = LV_COLOR_MAKE(0x55, 0x96, 0xd8);
+	style_btn_pr.body.grad_color = LV_COLOR_MAKE(0x37, 0x62, 0x90);
+	style_btn_pr.text.color = LV_COLOR_MAKE(0xbb, 0xd5, 0xf1);
+}
+
+void MP3UiCreate(void)
+{
+	UI.init();
+	StylesInit();
+	MainScreenCreate();
+	EqualizerScreenCreate();
+	FilesScreenCreate();
+	lv_scr_load(mainScreen);
+}

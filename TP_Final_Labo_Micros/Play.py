@@ -11,5 +11,5 @@ for x in dat:
 f.close()
 m = max(wav)
 wav = [x/m for x in wav]
-sd.play(wav,48000)
+sd.play(wav,44100)
 time.sleep(60)

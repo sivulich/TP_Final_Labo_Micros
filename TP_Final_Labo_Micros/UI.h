@@ -4,12 +4,14 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-typedef char (*currarr)[1024];
+typedef char (*currarr)[1025];
 
 typedef struct UI_ UI_;
 
 extern UI_ UI;
-
+#define UI_UP     'w'
+#define UI_DOWN   's'
+#define UI_SELECT 'e'
 
 
 struct UI_
@@ -30,8 +32,8 @@ struct UI_
 	char*(*getFile)();
 	char*(*getPath)();
 	void(*exitFile)();
-
 	currarr  (*getCurrent)(unsigned* sz, unsigned *pos);
+	void (*setPos)(int p);
 	void(*close)();
 };
 #ifdef __cplusplus
