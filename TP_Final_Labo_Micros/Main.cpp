@@ -24,7 +24,7 @@ static int tick_thread(void *data);
 *  STATIC VARIABLES
 **********************/
 static lv_indev_t * kb_indev;
-
+static lv_indev_drv_t kb_drv;
 
 unsigned char* id3TagInfo(const char* tag, unsigned char* mp3File, int headerSize, int* size)
 {
@@ -214,7 +214,7 @@ int main(int arc, char**)
 
 	/*Load a demo*/
 	//demo_create();
-	MP3UiCreate();
+	MP3UiCreate(&kb_drv);
 
 	while (1) {
 		/* Periodically call the lv_task handler.
@@ -295,7 +295,7 @@ static void hal_init(void)
 	/* If the PC keyboard driver is enabled in`lv_drv_conf.h`
 	* add this as an input device. It might be used in some examples. */
 #if USE_KEYBOARD
-	lv_indev_drv_t kb_drv;
+	
 	kb_drv.type = LV_INDEV_TYPE_KEYPAD;
 	kb_drv.read = keyboard_read;
 	kb_indev = lv_indev_drv_register(&kb_drv);

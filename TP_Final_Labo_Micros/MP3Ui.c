@@ -3,11 +3,39 @@
 #include <stdio.h>
 static lv_obj_t * mainScreen, *equalizerScreen,*filesScreen;
 static lv_obj_t * currentFileList[1024],*fileList[2];
+lv_obj_t * btnm1;
 static unsigned fileListSz = 0,fileListPointer=0,back=0;
 /*Button styles*/
 static lv_style_t style_bg,style_bgg;
 static lv_style_t style_btn_rel;
 static lv_style_t style_btn_pr;
+static lv_indev_drv_t* kb_drv;
+static lv_indev_t* kb_indev;
+
+enum{MAIN_SCREEN=0,PLAY_SCREEN,EQ_SCREEN,FILE_SCREEN0,FILE_SCREEN1,SETTING_SCREEN,SCREENS}screenEnum;
+static lv_group_t * groups[SCREENS];
+
+static void setActiveGroup(int p,lv_obj_t* ob)
+{
+	if (groups[p] != NULL)
+		lv_group_del(groups[p]);
+	groups[p] = lv_group_create();
+	lv_group_add_obj(groups[p], ob);
+	for (int i = 0; i < SCREENS; i++)
+		if (groups[i] != 0)
+		{
+			if (i != p)
+			{
+				lv_group_del(groups[i]);
+				groups[i] = 0;
+			}
+			else
+			{
+				lv_indev_set_group(kb_indev, groups[i]);
+			}
+		}
+			
+}
 
 
 static int checkMP3file(char* fn, size_t sz)
@@ -20,6 +48,8 @@ static int checkMP3file(char* fn, size_t sz)
 static lv_res_t retMainScreen(lv_obj_t* obj)
 {
 	lv_scr_load(mainScreen);
+	
+	setActiveGroup(MAIN_SCREEN,btnm1);
 	return LV_RES_OK;
 }
 
@@ -28,10 +58,12 @@ static lv_res_t btnm_action(lv_obj_t * btnm, const char *txt)
 	if (strcmp(SYMBOL_EDIT, txt) == 0)
 	{
 		lv_scr_load(equalizerScreen);
+		setActiveGroup(EQ_SCREEN,equalizerScreen);
 	}
 	else if (strcmp(SYMBOL_DIRECTORY, txt) == 0)
 	{
 		lv_scr_load(filesScreen);
+		setActiveGroup(FILE_SCREEN0 + fileListPointer, fileList[fileListPointer]);
 	}
 	return LV_RES_OK; /*Return OK because the button matrix is not deleted*/
 }
@@ -45,21 +77,12 @@ static lv_res_t fileScreenUpdate(lv_obj_t* obj)
 		{
 			pos = i;
 			break;
-		}
-			
+		}	
 	}
 	UI.setPos(pos);
-	if(UI.input(UI_SELECT)==1)
+	if (UI.input(UI_SELECT) == 1)
 		return LV_RES_OK;
-	/*if (pos == 1 && back == 0)
-	{
-		lv_obj_set_hidden(fileList[fileListPointer], true);
-		fileListPointer = (fileListPointer + 1) % 2;
-		lv_obj_set_hidden(fileList[fileListPointer], false);
-		back = 1;
-		return LV_RES_OK;
-	}
-	back = 0;*/
+		
 	char* currFile = UI.getFile();
 	printf("Current path %s\n", UI.getPath());
 	if (currFile != 0)
@@ -69,11 +92,19 @@ static lv_res_t fileScreenUpdate(lv_obj_t* obj)
 	}
 	else
 	{
+		//hide the current list and change to the other
 		lv_obj_set_hidden(fileList[fileListPointer], true);
 		fileListPointer = (fileListPointer + 1) % 2;
 		lv_obj_set_hidden(fileList[fileListPointer], false);
+		
+		//delete the list and group to re-create them 
 		lv_obj_del(fileList[fileListPointer]);
+		
+		//re-creating...
 		fileList[fileListPointer] = lv_list_create(filesScreen, NULL);
+		lv_obj_set_height(fileList[fileListPointer], LV_VER_RES);
+		setActiveGroup(FILE_SCREEN0 + fileListPointer, fileList[fileListPointer]);
+
 		lv_obj_align(fileList[fileListPointer], NULL, LV_ALIGN_IN_TOP_MID, 0, 0);
 		currarr current = UI.getCurrent(&fileListSz, &pos);
 		for (unsigned i = 0; i < fileListSz; i++)
@@ -107,7 +138,7 @@ static void MainScreenCreate(void)
 	mainScreen = lv_obj_create(NULL, NULL);
 	static const char * btnm_map[] = { SYMBOL_AUDIO, SYMBOL_EDIT,"\n", SYMBOL_DIRECTORY,SYMBOL_SETTINGS, "" };
 	/*Create a default button matrix*/
-	lv_obj_t * btnm1 = lv_btnm_create(mainScreen, NULL);
+	btnm1 = lv_btnm_create(mainScreen, NULL);
 	lv_btnm_set_map(btnm1, btnm_map);
 	lv_btnm_set_action(btnm1, btnm_action);
 	lv_obj_set_size(btnm1, LV_HOR_RES, LV_VER_RES);
@@ -116,6 +147,11 @@ static void MainScreenCreate(void)
 	lv_btnm_set_style(btnm1, LV_BTNM_STYLE_BG, &style_bg);
 	lv_btnm_set_style(btnm1, LV_BTNM_STYLE_BTN_REL, &style_btn_rel);
 	lv_btnm_set_style(btnm1, LV_BTNM_STYLE_BTN_PR, &style_btn_pr);
+
+	/*Create group of MainScren*/
+	groups[MAIN_SCREEN] = lv_group_create();
+	lv_group_add_obj(groups[MAIN_SCREEN], btnm1);
+	//lv_indev_set_group(kb_indev_main, groups[MAIN_SCREEN]);
 }
 
 static lv_obj_t* createRoller(const char* name, lv_coord_t x, lv_coord_t y, lv_coord_t w, lv_coord_t h)
@@ -144,7 +180,7 @@ static lv_obj_t* createRoller(const char* name, lv_coord_t x, lv_coord_t y, lv_c
 	return bassRoller;
 }
 
-static void BackButtonCreate(lv_obj_t* p, lv_res_t (*fn)(lv_obj_t* obj))
+static  lv_obj_t* BackButtonCreate(lv_obj_t* p, lv_res_t (*fn)(lv_obj_t* obj))
 {
 	lv_obj_t* backBtn = lv_btn_create(p, NULL);
 	lv_obj_set_pos(backBtn, 0, 0);
@@ -157,6 +193,7 @@ static void BackButtonCreate(lv_obj_t* p, lv_res_t (*fn)(lv_obj_t* obj))
 	lv_label_set_text(lab, SYMBOL_LEFT);
 	lv_btn_set_style(backBtn, LV_BTN_STATE_REL, &style_btn_rel);
 	lv_btn_set_style(backBtn, LV_BTN_STATE_PR, &style_btn_pr);
+	return backBtn;
 }
 
 static void EqualizerScreenCreate(void)
@@ -179,6 +216,8 @@ static void FilesScreenCreate(void)
 	currarr current = UI.getCurrent(&fileListSz, &pos);
 	fileList[0] = lv_list_create(filesScreen, NULL);
 	fileList[1] = lv_list_create(filesScreen, NULL);
+	lv_obj_set_height(fileList[0], LV_VER_RES);
+	lv_obj_set_height(fileList[1], LV_VER_RES);
 	lv_obj_set_hidden(fileList[1], true);
 	for (unsigned i = 0; i < fileListSz; i++)
 	{
@@ -205,6 +244,11 @@ static void FilesScreenCreate(void)
 	}
 	lv_obj_align(fileList[fileListPointer], NULL, LV_ALIGN_IN_TOP_MID, 0, 0);
 	BackButtonCreate(filesScreen, retMainScreen);
+	groups[FILE_SCREEN0] = lv_group_create();
+	lv_group_add_obj(groups[FILE_SCREEN0], fileList[0]);
+	//lv_indev_set_group(kb_indev_list, groups[FILE_SCREEN0]);
+	groups[FILE_SCREEN1] = lv_group_create();
+	lv_group_add_obj(groups[FILE_SCREEN1], fileList[1]);
 }
 
 void StylesInit()
@@ -242,12 +286,15 @@ void StylesInit()
 	style_btn_pr.text.color = LV_COLOR_MAKE(0xbb, 0xd5, 0xf1);
 }
 
-void MP3UiCreate(void)
+void MP3UiCreate(lv_indev_drv_t* kb_dr)
 {
+	kb_drv = kb_dr;
+	kb_indev = lv_indev_drv_register(kb_drv);
 	UI.init();
 	StylesInit();
 	MainScreenCreate();
 	EqualizerScreenCreate();
 	FilesScreenCreate();
 	lv_scr_load(mainScreen);
+	setActiveGroup(MAIN_SCREEN,btnm1);
 }

@@ -807,7 +807,7 @@ void lv_obj_set_hidden(lv_obj_t * obj, bool en)
     if(!obj->hidden) lv_obj_invalidate(obj);    /*Invalidate when not hidden (hidden objects are ignored) */
 
     lv_obj_t * par = lv_obj_get_parent(obj);
-    par->signal_func(par, LV_SIGNAL_CHILD_CHG, obj);
+	par->signal_func(par, LV_SIGNAL_CHILD_CHG, obj);
 
 }
 

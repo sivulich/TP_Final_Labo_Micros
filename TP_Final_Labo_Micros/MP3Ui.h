@@ -33,7 +33,7 @@ extern "C" {
 	/**
 	* Create the MP3_UI
 	*/
-	void MP3UiCreate(void);
+	void MP3UiCreate(lv_indev_drv_t* kb_dr);
 
 	/**********************
 	*      MACROS
